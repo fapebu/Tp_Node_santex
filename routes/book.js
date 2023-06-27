@@ -3,14 +3,14 @@ const router = express.Router();
 const { bookController } = require("../controllers");
 //const { jwtValidMDW, userIsAdminMDW } = require("../middleware/auth-mdw");
 
-//router.post("/:bookId", userIsAdminMDW, bookController.createBook);
+router.post("/", bookController.createBook);
 
 router.get("/:bookId", bookController.getBook);
 
-/*router.get("/:bookId", (req, res) => {
-  console.log(`Book found with id ${req.params.bookId}`);
+router.get("/", bookController.getAllBook);
 
-  res.json({ id: req.params.bookId });
-});*/
+router.put("/:bookId", bookController.modifyBook);
+
+router.delete("/:bookId", bookController.deleteBook);
 
 module.exports = router;
