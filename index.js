@@ -2,7 +2,7 @@ const express = require("express");
 
 const { bookRouter, userRouter, libraryRouter } = require("./routes");
 //const loggingMdw = require("./middleware/logging");
-//const { initializeDB } = require("./config/db-config");
+const { initializeDB } = require("./config/dbconfig");
 
 const PORT = 3000;
 //const bookFile = "book.json";
@@ -36,10 +36,7 @@ app.use("/user", userRouter);
 
 app.use(errorHandler);*/
 
-/*app.listen(PORT, async () => {
+app.listen(PORT, async () => {
   await initializeDB();
   console.log(`Server running in ${PORT}`);
-});*/
-app.listen(PORT, () => {
-    console.log(`Server running in ${PORT}`);
-  });
+});
