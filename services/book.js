@@ -22,7 +22,7 @@ const modifyBook = async (bookId,data) => {
 
 
 const deleteBook = async (bookId) => {
-  const book = await bookProvider.getbook(bookId);
+  const book = await bookProvider.deleteBook(bookId);
   if (book) {
     // L�gica de negocio
     console.log(book.firstName);

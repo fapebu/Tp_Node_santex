@@ -23,13 +23,17 @@ const getAllBook = async () => {
 const modifyBook = async (bookId, data) => {
   const book = await bookModel.update(data, {
     where :  {id : bookId}
-  },);
+    },);
   return bookModel.findByPk(bookId);
 };
 
 
 const deleteBook = async (bookId) => {
-  const book = await bookModel.deleteBook(bookId);
+  const book = await bookModel.destroy({
+    where: {
+      id : bookId
+    }
+  });
   return book;
 };
 

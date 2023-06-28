@@ -28,6 +28,14 @@ const Book =  sequelize.define("Book",{
         type:DataTypes.INTEGER,
         allowNull:false,
     },
-});
+    deletedAt:{
+        type:DataTypes.TIME,
+    },
+
+}, 
+{
+    paranoid: true,
+    timestamps: true
+  });
 
 module.exports = Book;
