@@ -1,17 +1,49 @@
 const { libraryService } = require("../services");
 
-const getLibrary = (req, res) => {
+const createLibrary = async (req, res) => {
   try {
-    const newlibrary = libraryService.getLibrary(req.params.libraryId);
-    res.json(newlibrary);
+    const library = await libraryService.createLibrary(req.body);
+    res.status(201).json(library);
   } catch (err) {
-    res.status(400).json({ action: "createBook", error: err.message });
+    res.status(400).json({ action: "createLibrary", error: err.message });
   }
 };
 
-/*const getBook = (req, res) => {
-  console.log(`Book found with id ${req.params.bookId}`);
-  res.json({ id: req.params.bookId, name: "Lord of the rings" });
-};*/
+const getLibrary = async (req, res) => {
+  try {
+    const library = await libraryService.getLibrary(req.params.libraryId);
+    res.json(library);
+  } catch (err) {
+    res.status(400).json({ action: "getLibrary", error: err.message });
+  }
+};
 
-module.exports = {getLibrary };
+const getAllLibrary = async (req, res) => {
+   try {
+     const library = await libraryService.getAllLibrary();
+    res.json(library);
+  } catch (err) {
+    res.status(400).json({ action: "getAllLibrary", error: err.message });
+  }
+};
+
+const modifyLibrary = async (req, res) => {
+ try {
+    const {id,nombre, location, telefono} = req.body; 
+    const library = await libraryService.modifyLibrary(req.params.libraryId ,{id,nombre, location, telefono} );
+    res.json(library);
+  } catch (err) {
+    res.status(400).json({ action: "modifyLibrary", error: err.message });
+  }
+};
+
+const deleteLibrary = async (req, res) => {
+  try {
+    const library = await libraryService.deleteLibrary(req.params.libraryId);
+    res.json(library);
+  } catch (err) {
+    res.status(400).json({ action: "deleteLibrary", error: err.message });
+  }
+};
+
+module.exports = { createLibrary,getLibrary, getAllLibrary, modifyLibrary,deleteLibrary };

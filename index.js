@@ -1,9 +1,9 @@
 const express = require("express");
 
-const { bookRouter, userRouter, libraryRouter } = require("./routes");
+const { bookRouter, userRouter, libraryRouter, authRouter  } = require("./routes");
 //const loggingMdw = require("./middleware/logging");
 const { initializeDB } = require("./config/dbconfig");
-
+const authentication = require("./middleware/authentication");
 const PORT = 3000;
 //const bookFile = "book.json";
 
@@ -23,6 +23,7 @@ app.use(express.json());
 app.use("/library", libraryRouter);
 app.use("/book", bookRouter);
 app.use("/user", userRouter);
+app.use("/login",authRouter);
 
 /*const errorHandler = (err, req, res, next) => {
   if (err.message === "File Exists") {

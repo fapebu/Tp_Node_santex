@@ -32,7 +32,8 @@ const deleteBook = async (bookId) => {
   const book = await bookModel.destroy({
     where: {
       id : bookId
-    }
+    },
+    force: false
   });
   return book;
 };

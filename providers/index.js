@@ -1,3 +1,4 @@
 const bookProvider = require("./book");
-
-module.exports = { bookProvider };
+const libraryProvider = require("./library");
+const userProvider = require("./user");
+module.exports = { bookProvider, libraryProvider,userProvider};

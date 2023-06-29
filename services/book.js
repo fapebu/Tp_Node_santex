@@ -1,8 +1,14 @@
-const { bookProvider } = require("../providers");
+const { bookProvider, libraryProvider } = require("../providers");
 
 
 const createBook = async (book) => {
-  return await bookProvider.createBook(book);
+  const statusLibrary = await libraryProvider.getLibrary(book.library);
+  console.log(statusLibrary);
+  if(statusLibrary){
+    return await bookProvider.createBook(book);
+
+  }
+    return null
 };
 
 const getBook = async (bookId) => {

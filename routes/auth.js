@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { userController } = require("../controllers");
-//const { jwtValidMDW, userIsAdminMDW } = require("../middleware/auth-mdw");
 const jwt = require("jsonwebtoken");
-//router.post("/", userController.login);
+const { userService } = require("../services");
+const SERVER_SECRET  = "pass"
+//const { SERVER_SECRET } = require("../middleware/auth-mdw");
+
 router.post("/", async (req, res) => {
   const { user, pass } = req.body;
 
@@ -22,5 +23,4 @@ router.post("/", async (req, res) => {
   }*/
 });
 
-module.exports = router;
 module.exports = router;
