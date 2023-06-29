@@ -7,6 +7,7 @@ const Book =  sequelize.define("Book",{
         allowNull:false,
         unique:true,
         primaryKey: true,
+        autoIncrement: true,
     },
     isbn:{
         type:DataTypes.INTEGER,

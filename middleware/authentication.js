@@ -9,11 +9,15 @@ passport.use(
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
         secretOrKey:secret,
     },(jwtPayload, done) => {
-        if(jwtPayload.user === 'admin'){
+        //if(jwtPayload.user === 'admin'){
             const usuario = jwtPayload;
             done(null,jwtPayload)
-        }else{
+       /* }else{
             return done(null,false ,{message:"El usuario no es valido"})
-        }
+        }*/
     }
     ));
+
+const validToken = passport.authenticate("jwt",{session:false})
+
+module.exports = {secret, validToken}

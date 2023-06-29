@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const { bookController } = require("../controllers");
-//const { jwtValidMDW, userIsAdminMDW } = require("../middleware/auth-mdw");
+const { validToken } = require("../middleware/authentication");
 
-router.post("/", bookController.createBook);
+router.post("/", validToken,bookController.createBook);
 
 router.get("/:bookId", bookController.getBook);
 
 router.get("/", bookController.getAllBook);
 
-router.put("/:bookId", bookController.modifyBook);
+router.put("/:bookId", validToken, bookController.modifyBook);
 
-router.delete("/:bookId", bookController.deleteBook);
+router.delete("/:bookId",validToken, bookController.deleteBook);
 
 module.exports = router;
