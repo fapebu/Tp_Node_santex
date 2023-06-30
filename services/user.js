@@ -11,7 +11,6 @@ const login = async (User) => {
     return token;
   } else {
     const userFound = await userProvider.login(user, pass);
-    console.log(userFound);
     if (userFound) {
       const token = jwt.sign({ user, role: "User" }, secret);
       return token ;

@@ -1,10 +1,12 @@
 const { userModel } = require("../models");
+const { Op } = require("sequelize");
 
 
 const login = async (user,pass) => {
        const validate = await userModel.findAll({where: {
-            user: user,
-            pass: pass
+            [Op.and]:
+                      [{user: user},
+                        {pass: pass}]
           }});
         if(validate.length !== 0){
           return true;
