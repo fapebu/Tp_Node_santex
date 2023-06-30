@@ -26,7 +26,6 @@ const login = async (User) => {
   
   const getUser = async (userId) => {
     const user = await userProvider.getUser(userId);
-    console.log(user);
     return user;
   };
   
@@ -38,10 +37,6 @@ const login = async (User) => {
   
   const deleteUser = async (userId) => {
     const user = await userProvider.deleteUser(userId);
-    if (user) {
-      // Lgica de negocio
-      console.log(user.firstName);
-    }
     return user;
   };
   

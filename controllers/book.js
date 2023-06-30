@@ -12,18 +12,18 @@ const createBook = async (req, res) => {
 const getBook = async (req, res) => {
   try {
     const Book = await bookService.getBook(req.params.bookId);
-    res.json(Book);
+    res.status(200).json(Book);
   } catch (err) {
-    res.status(400).json({ action: "getBook", error: err.message });
+   res.json({ action: "getBook", error: err.message });
   }
 };
 
 const getAllBook = async (req, res) => {
    try {
      const Book = await bookService.getAllBook();
-    res.json(Book);
+     res.status(200).json(Book);
   } catch (err) {
-    res.status(400).json({ action: "getAllBook", error: err.message });
+   res.json({ action: "getAllBook", error: err.message });
   }
 };
 
@@ -31,18 +31,18 @@ const modifyBook = async (req, res) => {
  try {
     const {id,isbn ,titulo, autor, year,library} = req.body; 
     const Book = await bookService.modifyBook(req.params.bookId ,{id,isbn ,titulo, autor, year,library} );
-    res.json(Book);
+    res.status(200).json(Book);
   } catch (err) {
-    res.status(400).json({ action: "modifyBook", error: err.message });
+   res.json({ action: "modifyBook", error: err.message });
   }
 };
 
 const deleteBook = async (req, res) => {
   try {
     const Book = await bookService.deleteBook(req.params.bookId);
-    res.json(Book);
+    res.status(200).json(Book);
   } catch (err) {
-    res.status(400).json({ action: "deleteBook", error: err.message });
+   res.json({ action: "deleteBook", error: err.message });
   }
 };
 

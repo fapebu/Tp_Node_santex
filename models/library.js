@@ -12,14 +12,24 @@ const Library =  sequelize.define("Library",{
     nombre:{
         type:DataTypes.STRING,
         allowNull:false,
+        validate: {
+            notEmpty: true,
+        }
     },
     location:{
         type:DataTypes.STRING,
         allowNull:false,
+        validate: {
+            notEmpty: true,
+        }
     },
     telefono:{
         type:DataTypes.STRING,
         allowNull:false,
+        validate: {
+            notEmpty: true,
+            isNumeric: true,
+        }
     },
     deletedAt:{
         type:DataTypes.TIME,
