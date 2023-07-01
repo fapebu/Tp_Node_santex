@@ -3,7 +3,6 @@ const { bookProvider, libraryProvider } = require("../providers");
 
 const createBook = async (book) => {
   const statusLibrary = await libraryProvider.getLibrary(book.library);
-  console.log(statusLibrary);
   if(statusLibrary){
     return await bookProvider.createBook(book);
 
@@ -29,10 +28,7 @@ const modifyBook = async (bookId,data) => {
 
 const deleteBook = async (bookId) => {
   const book = await bookProvider.deleteBook(bookId);
-  if (book) {
-    // L�gica de negocio
-    console.log(book.firstName);
-  }
+  
   return book;
 };
 

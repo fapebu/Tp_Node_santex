@@ -29,7 +29,7 @@ const adminToken = (req, res, next) => { //funcion de middleware para admin
         return next();
       }
   
-      res.status(401).json({ error: "El usuario no es ADMIN" });
+      res.json({ error: "El usuario no es ADMIN" });
     })(req, res, next); //parametros que se pasan a la funcion admin token para que se utilicen en la callback 
   };
 
